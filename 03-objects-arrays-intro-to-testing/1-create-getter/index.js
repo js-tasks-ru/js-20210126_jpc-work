@@ -4,7 +4,7 @@
  * @returns {function} - function-getter which allow get value from object by set path
  */
 export function createGetter(path) {
-	let properties = path.split('.');
+	const properties = path.split('.');
 
 	return function (obj) {
 		for(let property of properties)	{
@@ -17,7 +17,7 @@ export function createGetter(path) {
 				}
 			}
 			else{
-				return undefined;
+				return;
 			}
 		}
 	}
