@@ -7,12 +7,15 @@
 
 export function sortStrings(arr, param = 'asc') {
 	const arrCopy = arr.slice();
+	let direction;
 
 	if(param === 'desc') {
-		return arrCopy.sort((string1, string2) => -string1.localeCompare(string2, ['ru', 'en'], {caseFirst:"upper"}));
+		direction = -1;
 	} else if(param == 'asc') {
-		return arrCopy.sort((string1, string2) => string1.localeCompare(string2, ['ru', 'en'], {caseFirst:"upper"}));	
+		direction = 1;
+	} else {
+		return arr;
 	}
 
-	return arr;
+	return arrCopy.sort((string1, string2) => direction * string1.localeCompare(string2, ['ru', 'en'], {caseFirst:"upper"}));	
 }
