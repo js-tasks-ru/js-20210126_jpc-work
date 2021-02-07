@@ -6,4 +6,12 @@
  */
 export const omit = (obj, ...fields) => {
 
+	let resultObject = {};
+
+	for(const key of Object.keys(obj)) {
+		if(!fields.includes(key))
+			resultObject[key] = obj[key];
+	}
+
+	return resultObject;
 };
