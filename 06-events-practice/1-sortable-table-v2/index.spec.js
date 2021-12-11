@@ -33,7 +33,7 @@ const data = [
   },
 ];
 
-export const header = [
+export const headerConfig = [
   {
     id: 'title',
     title: 'Name',
@@ -58,7 +58,13 @@ describe('events-practice/sortable-table-v2', () => {
   let sortableTable;
 
   beforeEach(() => {
-    sortableTable = new SortableTable(header, { data });
+    sortableTable = new SortableTable(headerConfig, {
+      data,
+      sorted: {
+        id: headerConfig.find(item => item.sortable).id,
+        order: 'asc'
+      }
+    });
 
     document.body.append(sortableTable.element);
   });
